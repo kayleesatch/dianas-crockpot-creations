@@ -5,11 +5,20 @@ import { faBars, faTimes, faCartShopping } from "@fortawesome/free-solid-svg-ico
 import { useCart } from "./CartContext"
 import { auth, db } from "./firebase"
 import { doc, getDoc } from "firebase/firestore"
+import { signOut } from 'firebase/auth'
 
 export default function Nav() {
   const { cartItems } = useCart();
   const [isOpen, setIsOpen] = useState(false)
   const [role, setRole] = useState(null)
+  const [currentUser, setCurrentUser] = useState(null)
+
+  const handleLogout = async () => {
+    await signOut(auth);
+    setCurrentUser(null);
+    setRole(null);
+    closeMenu()
+  };
 
   useEffect(() => {
     const fetchUserRole =async () => {
@@ -18,16 +27,21 @@ export default function Nav() {
         const userDoc = await getDoc(doc(db, "users", user.uid));
         if (userDoc.exists()) {
           setRole(userDoc.data().role);
+        } else {
+          setRole(null);
         }
+      } else {
+        setRole(null);
       }
     };
 
     fetchUserRole();
-
-    const unsubscribe = auth.onAuthStateChanged(() => {
+    
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      setCurrentUser(user);
       fetchUserRole();
     });
-
+    
     return unsubscribe;
   }, [])
 
@@ -62,6 +76,14 @@ export default function Nav() {
         )}
 
         <Link to="/login" className="hover:underline hover:scale-105 transition">Login</Link>
+        {currentUser && (
+          <button
+            onClick={handleLogout}
+            className='hover:underline hover:scale-105 transition text-red-400'
+          >
+            Logout
+          </button>
+        )}
         <Link to="/cart" className="relative text-white">
           <FontAwesomeIcon icon={faCartShopping} />
           {cartItems.length > 0 && (
@@ -106,6 +128,14 @@ export default function Nav() {
           )}
 
           <Link className="hover:underline hover:scale-105" to="/login" onClick={closeMenu}>Login</Link>
+          {currentUser && (
+            <button
+              onClick={handleLogout}
+              className='hover:underline hover:scale-105 transition text-red-400'
+            >
+              Logout
+            </button>
+          )}
         </div>
       )}
     </nav>

@@ -41,7 +41,7 @@ export default function Menu() {
     <section id="menu" className="py-20 px-4 text-white">
       <div className="max-w-4xl mx-auto text-center">
         <div className="relative w-90 h-36 mx-auto mb-10 bg-amber-400 text-white flex items-center justify-center clip-diamond">
-        <h2 className="text-7xl md:text-7xl font-dancing font-bold text-black drop-shadow-md">
+        <h2 className="text-4xl sm:text-6xl md:text-8xl font-dancing font-bold text-black drop-shadow-md">
           Monthly Menu
         </h2>
         </div>
@@ -66,25 +66,27 @@ export default function Menu() {
                 onChange={(e) => handleModificationChange(index, e.target.value)}
                 className="w-full mt-4 px-3 py-2 rounded border border-white/30 bg-gray-700 text-white placeholder-gray-400" 
               />
-              <p className="text-sm md:text-base text-gray-200 italic mb-2">
+              <div className="text-sm md:text-base text-gray-200 mb-2">
                 {item.sizes.map((sizeOption, sIndex) => (
-                  <button
-                    key={sIndex}
-                    onClick={() =>
-                      addToCart({
-                        id: `classic_${index}_${sizeOption.label}`,
-                        name: item.name,
-                        size: sizeOption.label,
-                        price: sizeOption.price,
-                        modification: modifications[index] || "",
-                      })
-                  }
-                  className="px-4 py-2 mt-4 mx-2 bg-orange-300 hover:bg-orange-400 text-black rounded"
-                >
-                  {sizeOption.label} - ${sizeOption.price.toFixed(2)}
-                </button>
+                  <div key={sIndex} className="inline-block text-center mx-2">
+                    <button
+                      onClick={() =>
+                        addToCart({
+                          id: `classic_${index}_${sizeOption.label}`,
+                          name: item.name,
+                          size: sizeOption.label,
+                          price: sizeOption.price,
+                          modification: modifications[index] || "",
+                        })
+                      }
+                      className="px-4 py-2 mt-4 mx-2 bg-orange-300 font-semibold hover:bg-orange-400 text-black rounded"
+                      >
+                    {sizeOption.label} - ${sizeOption.price.toFixed(2)}
+                  </button>
+                  <div className="text-base text-gray-300 mt-2">{sizeOption.feeds}</div>
+                </div>
               ))}
-              </p>
+              </div>
             </li>
             ))}
         </ul>

@@ -1,4 +1,8 @@
+import { useNavigate } from "react-router-dom";
+
 export default function Instructions() {
+    const navigate = useNavigate()
+
     return (
         <section id="instructions" className="min-h-screen bg-gradient-to-br from-purple-200 to-yellow-100 px-6 py-20 flex items-center justify-center">
             <div className="bg-white/80 backdrop-blur-md border border-white/30 rounded-xl p-8 shadow-xl max-w-2xl text-center">
@@ -12,6 +16,14 @@ export default function Instructions() {
                 </ol>
 
                 <p className="italic text-gray-600">P.S. Clean up is a breeze!</p>
+            </div>
+            <div className="bottom-2 left-2 absolute">
+                <button
+                    onClick={() => navigate("/")}
+                    className="bg-gray-500 text-white  px-3 py-1 rounded mb-4"
+                    >
+                    Back to Menu
+                </button>
             </div>
         </section>
     )

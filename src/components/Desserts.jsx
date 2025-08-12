@@ -31,7 +31,7 @@ export default function Desserts() {
     },
     {
         name: "DANISH",
-        description:"Your choice of fruit (Cherry, Blueberry, Lemon, Strawberry, Raspberry, Rhubarb, Apple and Mixed Berry) made with cream cheese and a flaky crust.",
+        description:"Your choice of fruit (Cherry, Sour Cherry, Blueberry, Lemon, Strawberry, Raspberry, Rhubarb, Apple and Mixed Berry) made with cream cheese and a flaky crust.",
         sizes: [{ label: "9 X 13", price: 25.00 }]
     },
     {
@@ -67,7 +67,7 @@ export default function Desserts() {
         className="relative z-10 bg-[url('/images/DessertsImg.jpg')] bg-fixed bg-center bg-cover">
       <div className="max-w-4xl mx-auto text-center">
         <div className="relative w-90 h-36 mx-auto mb-10 bg-gray-300 text-white flex items-center justify-center clip-diamond">
-            <h2 className="text-8xl md:text-8xl font-dancing font-bold text-black drop-shadow-md">
+            <h2 className="text-4xl sm:text-6xl md:text-8xl font-dancing font-bold text-black drop-shadow-md">
               Desserts
             </h2>
         </div>
@@ -96,6 +96,7 @@ export default function Desserts() {
                     >
                         <option value="">Select Flavor</option>
                         <option value="Cherry">Cherry</option>
+                        <option value="SourCherry">Sour Cherry</option>
                         <option value="Blueberry">Blueberry</option>
                         <option value="Lemon">Lemon</option>
                         <option value="Strawberry">Strawberry</option>
@@ -115,7 +116,7 @@ export default function Desserts() {
                 className="w-full mt-4 px-3 py-2 rounded border border-white/30 bg-gray-500 text-white placeholder-gray-400"
               />
 
-              <p className="text-sm md:text-base text-gray-200 italic mb-2">
+              <div className="text-sm md:text-base text-gray-200 italic mb-2">
                 {item.sizes.map((sizeOption, sIndex) => (
                   <button
                     key={sIndex}
@@ -134,7 +135,7 @@ export default function Desserts() {
                   {sizeOption.label} - ${sizeOption.price.toFixed(2)}
                 </button>
               ))}
-              </p>
+              </div>
             </li>
           ))}
         </ul>

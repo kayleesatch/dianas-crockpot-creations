@@ -1,6 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import { faFacebook } from "@fortawesome/free-brands-svg-icons";
+import { Link } from "react-router-dom";
 
 export default function Contact() {
     return (
@@ -31,6 +32,15 @@ export default function Contact() {
                     >
                     <FontAwesomeIcon icon={faFacebook} />
                     <span>Facebook</span>
+                </a>
+            </div>
+
+            <div className="mt-8">
+                <a
+                    href="https://www.facebook.com/profile.php?id=61566333158010&sk=photos"
+                    className="inline-block px-20 py-8 bg-orange-300 bg-opacity-80 text-white text-3xl font-semibold rounded-lg shadow-md hover:bg-orange-400 hover:bg-opacity-90 transition duration-300"
+                >
+                    View Gallery
                 </a>
             </div>
         </section>

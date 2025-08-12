@@ -10,24 +10,24 @@ export default function Classics() {
       name: "MISSISSIPPI POT ROAST WITH VEGGIES",
       description: "Chuck roast seasoned with pepperocinis and ranch seasoning give this pot roast a unique flavor, surrounded with potatoes, carrots, celery and onions in a rich brown gravy.",
       sizes: [
-        { label: "Small", price: 30.00 },      
-        { label: "Large", price: 50.00 }
+        { label: "Small", price: 30.00, feeds: "Feeds 3-4" },      
+        { label: "Large", price: 50.00, feeds: "Feeds 6-8" }
       ] 
     },
     {
       name: "MEATLOAF WITH VEGGIES",
       description: "Our homemade meatloaf surrounded by carrots, potatoes, onions and celery.",
       sizes: [
-        { label: "Small", price: 30.00 }, 
-        { label: "Large", price: 50.00 } 
+        { label: "Small", price: 30.00, feeds: "Feeds 3-4" }, 
+        { label: "Large", price: 50.00, feeds: "Feeds 6-8" } 
       ]
     },
     {
       name: "BEEF MOCK ROULADEN",
       description: "This version of the German dish that is so delicious, it will make you feel like you're in Germany. Beef stew meat, dill pickles, onion, Swiss cheese and bacon cooked until tender and then put over egg noodles or potato dumplings with a side of pickled red cabbage.",
       sizes: [
-        { label: "Small", price: 30.00 },
-        { label: "Large", price: 50.00 }
+        { label: "Small", price: 30.00, feeds: "Feeds 3-4" },
+        { label: "Large", price: 50.00, feeds: "Feeds 6-8" }
       ] 
     },
   ];
@@ -43,7 +43,7 @@ export default function Classics() {
     <section id="classics" className="py-20 px-4 text-white">
       <div className="max-w-4xl mx-auto text-center">
         <div className="relative w-90 h-36 mx-auto mb-10 bg-amber-400 text-white flex items-center justify-center clip-diamond">
-            <h2 className="text-8xl md:text-8xl font-dancing font-bold text-black drop-shadow-md">
+            <h2 className="text-4xl sm:text-6xl md:text-8xl font-dancing font-bold text-black drop-shadow-md">
               Classics
             </h2>
         </div>
@@ -69,25 +69,27 @@ export default function Classics() {
                 onChange={(e) => handleModificationChange(index, e.target.value)}
                 className="w-full mt-4 px-3 py-2 rounded border border-white/30 bg-gray-700 text-white placeholder-gray-400" 
               />
-              <p className="text-sm md:text-base text-gray-200 italic mb-2">
+              <div className="text-sm md:text-base text-gray-200">
                 {item.sizes.map((sizeOption, sIndex) => (
-                  <button
-                    key={sIndex}
-                    onClick={() =>
-                      addToCart({
-                        id: `classic_${index}_${sizeOption.label}`,
-                        name: item.name,
-                        size: sizeOption.label,
-                        price: sizeOption.price,
-                        modification: modifications[index] || "",
-                      })
-                  }
-                  className="px-4 py-2 mt-4 mx-2 bg-orange-300 hover:bg-orange-400 text-black rounded"
-                >
-                  {sizeOption.label} - ${sizeOption.price.toFixed(2)}
-                </button>
+                  <div key={sIndex} className="inline-block text-center mx-2">
+                    <button
+                      onClick={() =>
+                        addToCart({
+                          id: `classic_${index}_${sizeOption.label}`,
+                          name: item.name,
+                          size: sizeOption.label,
+                          price: sizeOption.price,
+                          modification: modifications[index] || "",
+                        })
+                      }
+                      className="px-4 py-2 mt-4 mx-2 bg-orange-300 hover:bg-orange-400 text-black font-semibold rounded"
+                      >
+                    {sizeOption.label} - ${sizeOption.price.toFixed(2)}
+                  </button>
+                  <div className="text-base text-gray-300 mt-2">{sizeOption.feeds}</div>
+                </div>
               ))}
-              </p>
+              </div>
             </li>
           ))}
         </ul>

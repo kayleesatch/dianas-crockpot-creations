@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
-import { auth, db } from "./firebase";
+import { auth, db, } from "./firebase";
 import { collection, getDocs, addDoc, updateDoc, deleteDoc, doc, getDoc } from "firebase/firestore";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function MenuEditor() {
+    const navigate = useNavigate();
     const [menuItems, setMenuItems] = useState([]);
     const [newItem, setNewItem] = useState({ 
         name: "", 
@@ -22,22 +24,23 @@ export default function MenuEditor() {
             setMenuItems(snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })));
         };
 
-        const fetchUserRole = async () => {
-            const user = auth.currentUser;
-            if (user) {
-                const userDoc = await getDoc(doc(db, "users", user.uid));
-                if (userDoc.exists()) {
-                    setRole(userDoc.data().role);
-                }
+       const fetchUserRole = async () => {
+        const user = auth.currentUser;
+        if (user) {
+            const userDoc = await getDoc(doc(db, "users", user.uid));
+            if (userDoc.exists()) {
+                setRole(userDoc.data().role);
             }
-            setLoading(false);
-        };
+        }
+        setLoading(false);
+       }
+
         fetchMenuItems();
         fetchUserRole();
     }, []);
 
     const handleAddItem = async () => {
-        if (!newItem.name.trim() === "" || !newItem.description.trim()) return;
+        if (newItem.name.trim() === "" || newItem.description.trim() === "") return;
 
         try {
             const capitalizedItem = {
@@ -131,12 +134,14 @@ export default function MenuEditor() {
             <div className="space-y-4 mb-10">
                 <input 
                     type="text"
+                    id="new-item-name"
                     placeholder="Dish Name"
                     value={newItem.name}
                     onChange={e => setNewItem({ ...newItem, name: e.target.value })}
                     className="w-full p-2 rounded bg-gray-800 border border-white/20" 
                 />
                 <textarea 
+                    id="new-item-description"
                     placeholder="Description" 
                     value={newItem.description}
                     onChange={e => setNewItem({ ...newItem, description: e.target.value })}
@@ -146,6 +151,7 @@ export default function MenuEditor() {
                         <div key={idx} className="flex space-x-2">
                             <input 
                                 type="text"
+                                id={`new-item-size-label-${idx}`}
                                 placeholder="Size Label"
                                 value={size.label}
                                 onChange={e => handleSizeChange(idx, "label", e.target.value)}
@@ -153,6 +159,7 @@ export default function MenuEditor() {
                             />
                             <input 
                                 type="number"
+                                id={`new-item-size-price-${idx}`}
                                 placeholder="Price"
                                 value={size.price}
                                 onChange={e => handleSizeChange(idx, "price", e.target.value)}
@@ -175,12 +182,14 @@ export default function MenuEditor() {
                             {editingItemId === item.id ? (
                                 <>
                                     <input 
-                                        type="text" 
+                                        type="text"
+                                        id={`edit-item-name-${item.id}`} 
                                         value={item.name}
                                         onChange={e => handleEditChange(item.id, "name", e.target.value)}
                                         className="w-full p-2 mb-2 rounded bg-gray-700"    
                                     />
                                     <textarea
+                                        id={`edit-item-description-${item.id}`}
                                         value={item.description}
                                         onChange={e => handleEditChange(item.id, "description", e.target.value)}
                                         className="w-full p-2 mb-2 rounded bg-gray-700"
@@ -188,13 +197,15 @@ export default function MenuEditor() {
                                     {item.sizes.map((size, idx) => (
                                         <div key={idx} className="flex space-x-2 mb-2">
                                             <input 
-                                                type="text" 
+                                                type="text"
+                                                id={`edit-item-${item.id}-size-label-${idx}`} 
                                                 value={size.label}
                                                 onChange={e => handleEditSizeChange(item.id, idx, "label", e.target.value)}
                                                 className="p-2 rounded bg-gray-700"
                                             />
                                             <input 
-                                                type="number" 
+                                                type="number"
+                                                id={`edit-item-${item.id}-size-price-${idx}`} 
                                                 value={size.price}
                                                 onChange={e => handleEditSizeChange(item.id, idx, "price", e.target.value)}
                                                 className="p-2 rounded bg-gray-700"    
@@ -237,6 +248,14 @@ export default function MenuEditor() {
                             )}
                         </div>
                     ))}
+                </div>
+                <div className="bottom-2 left-2">
+                    <button
+                        onClick={() => navigate("/")}
+                        className="bg-gray-500 text-white  px-3 py-1 rounded mb-4"
+                        >
+                        Back to Menu
+                    </button>
                 </div>
         </div>
     );
