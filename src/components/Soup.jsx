@@ -39,7 +39,7 @@ export default function Soup() {
     <section id="soup" className="py-20 px-4 text-white">
       <div className="max-w-4xl mx-auto text-center">
         <div className="relative w-90 h-36 mx-auto mb-10 bg-amber-400 text-white flex items-center justify-center clip-diamond">
-          <h2 className="text-7xl sm:text-5xl md:text-6xl font-dancing font-bold text-black drop-shadow-md">
+          <h2 className="text-4xl sm:text-6xl md:text-8xl font-dancing font-bold text-black drop-shadow-md">
             Soup and Chili
           </h2>
         </div>

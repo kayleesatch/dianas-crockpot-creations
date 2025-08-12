@@ -6,7 +6,7 @@ export default function Hero() {
                     Diana's<br />Crockpot<br />Creations
                 </h1>
             </div>
-            <ul className="mt-8 grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            <ul className="mt-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4">
                 {[
                     "❖ Local Delivery",
                     "❖ Accepts Venmo",
@@ -15,7 +15,7 @@ export default function Hero() {
                 ].map((text, index) => (
                     <li
                         key={index}
-                        className="clip-diamond w-64 h-20 bg-amber-500 text-white font-semibold flex items-center justify-center mx-auto shadow-lg"
+                        className="clip-diamond w-64 max-w-xs h-20 bg-amber-500 text-white font-semibold flex items-center justify-center mx-auto shadow-lg"
                     >
                         {text}
                     </li>
