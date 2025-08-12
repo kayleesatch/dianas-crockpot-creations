@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Link } from "react-router-dom"
+import { HashLink } from 'react-router-hash-link'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faBars, faTimes, faCartShopping } from "@fortawesome/free-solid-svg-icons"
 import { useCart } from "./CartContext"
@@ -51,19 +52,20 @@ export default function Nav() {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 shadow-md px-6 py-3 flex justify-between items-center bg-black">
       
-      <a 
-        href="#hero" 
+      <HashLink 
+        smooth
+        to="/#hero" 
         onClick={closeMenu}
         className="text-2xl font-bold text-white"
       >
         Diana's Crockpot Creations
-      </a>
+      </HashLink>
       <div className="hidden md:flex space-x-6 font-medium text-white">
-        <a href="#classics" className="hover:underline hover:scale-105 transition">Classics</a>
-        <a href="#menu" className="hover:underline hover:scale-105 transition">Monthly Menu</a>
-        <a href="#soup" className="hover:underline hover:scale-105 transition">Soups and Chili</a>
-        <a href="#desserts" className="hover:underline hover:scale-105 transition">Desserts</a>
-        <a href="#contact" className="hover:underline hover:scale-105 transition">Contact</a>
+        <HashLink smooth to="/#classics" className="hover:underline hover:scale-105 transition">Classics</HashLink>
+        <HashLink smooth to="/#menu" className="hover:underline hover:scale-105 transition">Monthly Menu</HashLink>
+        <HashLink smooth to="/#soup" className="hover:underline hover:scale-105 transition">Soups and Chili</HashLink>
+        <HashLink smooth to="/#desserts" className="hover:underline hover:scale-105 transition">Desserts</HashLink>
+        <HashLink smooth to="/#contact" className="hover:underline hover:scale-105 transition">Contact</HashLink>
         <Link to="/instructions" className="hover:underline hover:scale-105 transition">Instructions</Link>
 
         {role === "manager" && (
@@ -110,11 +112,11 @@ export default function Nav() {
 
       {isOpen && (
         <div className="absolute top-full left-0 w-full bg-black text-white shadow-md md:hidden flex flex-col items-center space-y-4 py-4 font-medium">
-          <a className="hover:underline hover:scale-105" href="#classics" onClick={closeMenu}>Classics</a>
-          <a className="hover:underline hover:scale-105" href="#menu" onClick={closeMenu}>Monthly Menu</a>
-          <a className="hover:underline hover:scale-105" href="#soup" onClick={closeMenu}>Soups and Chili</a>
-          <a className="hover:underline hover:scale-105" href="#desserts" onClick={closeMenu}>Desserts</a>
-          <a className="hover:underline hover:scale-105" href="#contact" onClick={closeMenu}>Contact</a>
+          <HashLink smooth className="hover:underline hover:scale-105" to="/#classics" onClick={closeMenu}>Classics</HashLink>
+          <HashLink smooth className="hover:underline hover:scale-105" to="/#menu" onClick={closeMenu}>Monthly Menu</HashLink>
+          <HashLink smooth className="hover:underline hover:scale-105" to="/#soup" onClick={closeMenu}>Soups and Chili</HashLink>
+          <HashLink smooth className="hover:underline hover:scale-105" to="/#desserts" onClick={closeMenu}>Desserts</HashLink>
+          <HashLink smooth className="hover:underline hover:scale-105" to="/#contact" onClick={closeMenu}>Contact</HashLink>
           <Link className="hover:underline hover:scale-105" to="/instructions" onClick={closeMenu}>Instructions</Link>
 
           {role === "manager" && (
