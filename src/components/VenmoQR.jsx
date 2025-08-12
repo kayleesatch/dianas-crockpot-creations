@@ -21,13 +21,20 @@ export default function VenmoQR({ isOpen, onClose }) {
                     ✕
                 </button>
 
-                <h2 className="text-xl font-bold mb-4">Scan to Pay with Venmo</h2>
+                <h2 className="text-xl font-bold mb-4">Scan to Pay with Venmo<br />Or tap to go to Diana on Venmo</h2>
 
-                <img 
-                    src="/images/DianaVenmoQR.jpg" 
-                    alt="Venmo QR Code"
-                    className="w-full h-auto" 
-                />
+                <a 
+                    href="https://venmo.com/u/Diana-Brueckner"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block"
+                >
+                    <img 
+                        src="/images/DianaVenmoQR.jpg" 
+                        alt="Venmo QR Code"
+                        className="w-full h-auto" 
+                    />
+                </a>
 
                 <p className="text-center text-sm mt-4">
                     Open your Venmo app and scan this code to send your payment.
