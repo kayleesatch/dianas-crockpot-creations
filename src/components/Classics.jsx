@@ -30,6 +30,14 @@ export default function Classics() {
         { label: "Large", price: 50.00, feeds: "Feeds 6-8" }
       ] 
     },
+    {
+      name: "OLD FASHIONED HAM SALAD",
+      description: "Diced ham with sweet pickles and mayo makes this awesome for cool summer sandwiches.",
+      sizes: [
+        { label: "Small", price: 13.50, feeds: "1 pound" },
+        { label: "Large", price: 25.00, feeds: "2 pounds" }
+      ] 
+    },
   ];
 
   const handleModificationChange = (index, value) => {
