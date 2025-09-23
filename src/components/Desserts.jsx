@@ -27,7 +27,7 @@ export default function Desserts() {
     {
       name: "BREAD PUDDING WITH BOURBON SAUCE",
       description: "Old fashion bread pudding with raisins and creamy bourbon sauce to go on top.",
-      sizes: [{ label: "9inch", price: 25.00 }]
+      sizes: [{ label: "9 X 13", price: 25.00 }]
     },
     {
         name: "DANISH",
