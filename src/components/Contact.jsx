@@ -17,7 +17,7 @@ export default function Contact() {
 
             <div className="flex space-x-6 mt-4">
                 <a 
-                    href="mailto:dianabrueckner@comcast.net"
+                    href="mailto:dianascrockpot@gmail.com"
                     className="bg-white text-black px-4 py-2 rounded shadow hover:bg-gray-200 transition flex items-center space-x-2"    
                     >
                     <FontAwesomeIcon icon={faEnvelope} />
