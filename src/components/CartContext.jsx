@@ -36,7 +36,7 @@ export function CartProvider({ children }) {
     const clearCart = () => setCartItems([])
 
     const total = cartItems.reduce(
-        (acc, item) => acc + item.price * item.quantity, 0
+        (acc, item) => acc + (Number(item.price) || 0) * item.quantity, 0
     )
 
     return (

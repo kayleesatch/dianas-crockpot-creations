@@ -10,24 +10,24 @@ export default function Classics() {
       name: "MISSISSIPPI POT ROAST WITH VEGGIES",
       description: "Chuck roast seasoned with pepperocinis and ranch seasoning give this pot roast a unique flavor, surrounded with potatoes, carrots, celery and onions in a rich brown gravy.",
       sizes: [
-        { label: "Small", price: 30.00, feeds: "Feeds 3-4" },      
-        { label: "Large", price: 50.00, feeds: "Feeds 6-8" }
+        { label: "Small", price: 35.00, feeds: "Feeds 3-4" },      
+        { label: "Large", price: 60.00, feeds: "Feeds 6-8" }
       ] 
     },
     {
       name: "MEATLOAF WITH VEGGIES",
       description: "Our homemade meatloaf surrounded by carrots, potatoes, onions and celery.",
       sizes: [
-        { label: "Small", price: 30.00, feeds: "Feeds 3-4" }, 
-        { label: "Large", price: 50.00, feeds: "Feeds 6-8" } 
+        { label: "Small", price: 35.00, feeds: "Feeds 3-4" }, 
+        { label: "Large", price: 60.00, feeds: "Feeds 6-8" } 
       ]
     },
     {
       name: "BEEF MOCK ROULADEN",
       description: "This version of the German dish that is so delicious, it will make you feel like you're in Germany. Beef stew meat, dill pickles, onion, Swiss cheese and bacon cooked until tender and then put over egg noodles or potato dumplings with a side of pickled red cabbage.",
       sizes: [
-        { label: "Small", price: 30.00, feeds: "Feeds 3-4" },
-        { label: "Large", price: 50.00, feeds: "Feeds 6-8" }
+        { label: "Small", price: 35.00, feeds: "Feeds 3-4" },
+        { label: "Large", price: 60.00, feeds: "Feeds 6-8" }
       ] 
     },
     {

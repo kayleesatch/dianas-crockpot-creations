@@ -81,7 +81,7 @@ export default function Nav() {
         {currentUser && (
           <button
             onClick={handleLogout}
-            className='hover:underline hover:scale-105 transition text-red-400'
+            className='hover:underline hover:scale-115 transition text-red-400'
           >
             Logout
           </button>
