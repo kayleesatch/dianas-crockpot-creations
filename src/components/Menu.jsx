@@ -72,7 +72,7 @@ export default function Menu() {
                     <button
                       onClick={() =>
                         addToCart({
-                          id: `classic_${index}_${sizeOption.label}`,
+                          id: item.id,
                           name: item.name,
                           size: sizeOption.label,
                           price: sizeOption.price,

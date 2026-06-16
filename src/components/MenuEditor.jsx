@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { auth, db, } from "./firebase";
 import { collection, getDocs, addDoc, updateDoc, deleteDoc, doc, getDoc } from "firebase/firestore";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function MenuEditor() {
     const navigate = useNavigate();
@@ -68,6 +68,9 @@ export default function MenuEditor() {
     };
 
     const handleUpdateItem = async (id) => {
+        const scrollPosition = window.scrollY;
+
+
         const itemToUpdate = menuItems.find(item => item.id === id);
         if (!itemToUpdate) return;
 
@@ -80,6 +83,11 @@ export default function MenuEditor() {
                 }))
             });
             setEditingItemId(null);
+
+            setTimeout(() => {
+                window.scrollTo(0, scrollPosition);
+            }, 0);
+
         } catch (err) {
             console.error("Error updating item:", err);
         }
